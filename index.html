@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./assets/css/main.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="bg-video-wrap">
+        <video src="./assets/video/sabit döngü.mp4" loop muted autoplay>
+        </video>
+    </div>
+    <div class="logo">
+        <img src="./assets/img/logo.png" alt="">
+    </div>
+    <div class="videoControler">
+        <div class="firstArea">
+            <img class="long" src="./assets/img/back.png" alt="">
+            <img class="sound" src="./assets/img/musicIcon.png" alt="">
+        </div>
+        <div class="secondArea">
+            <audio id="music" preload="auto" loop="false">
+                <source src="./assets/music/Iruka-Taikai.mp3" type="audio/mp3">
+                <source src="./assets/music/Iruka-Taikai.mp3" type="audio/ogg">
+            </audio>
+            <div class="playtBackNext d-none">
+                <img src="./assets/img/goBack.png" onclick="play_aud()" id="play_button" alt="">
+                <img src="./assets/img/start.png" id="pause" class="d-none" alt="">
+                <img src="./assets/img/plaIcon.png" id="play" class="d-block" alt="">
+                <img src="./assets/img/next.png" onclick="stop_aud()" id="play_button" alt="">
+            </div>
+            <div class="songName d-none">
+                <p>Iruka</p>
+                <p>Taikai</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="buttonArea">
+        <div class="text">
+            <p>Welcome the TENKAI verse</p>
+        </div>
+        <div class="btn">
+            <button class="comingSoon">COMING SOON...</button>
+        </div>
+    </div>
+    <div class="footer">
+        <hr>
+        <div class="socialMedia">
+            <a target="_blank" href="https://discord.gg/arprpkc5">
+                <img src="./assets/img/discort.png" alt="">
+            </a>
+            <a target="_blank" href="https://instagram.com/tenkainft?igshid=YmMyMTA2M2Y=">
+                <img src="./assets/img/instagram.png" alt="">
+            </a>
+            <a target="_blank" href="https://twitter.com/tenkainft?s=11&t=EpzUcmYPDQIOG9tc_KZdKw">
+                <img src="./assets/img/twitter.png" alt="">
+            </a>
+        </div>
+        <hr class="hrTwo">
+        <div class="textArea">
+            <p>Copyright © 2022 TENKAI</p>
+        </div>
+        <hr>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+    var a = true;
+    $(".long").click(function () {
+        if (a) {
+            a = false;
+            $(".secondArea").animate({ width: "330px", })
+            $(".firstArea").animate({ left: "90%", }, 0)
+            $(".secondArea").css("background-color", "#502C7D");
+            $(".songName , .playtBackNext ").removeClass("d-none");
+            $(".long").attr('src', './assets/img/plaIcon.png');
+        } else if (!a) {
+            a = true;
+            $(".secondArea").animate({ width: "36px" })
+
+            $(".songName , .playtBackNext ").addClass("d-none");
+            $(".long").attr('src', './assets/img/plaIconR.png');
+            $(".firstArea").animate({ left: "3%", }, 1500)
+        }
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function () { startplayer(); }, false);
+
+    var music = document.getElementById("music");
+    var playButton = document.getElementById("play");
+    var pauseButton = document.getElementById("pause");
+
+
+    playButton.onclick = function () {
+        music.play();
+        $("#play").addClass("d-none");
+        $("#pause").removeClass("d-none");
+    }
+
+    pauseButton.onclick = function () {
+        music.pause();
+        $("#pause").addClass("d-none");
+        $("#play").removeClass("d-none");
+    }
+
+    var b = true;
+
+    $(".sound").click(function () {
+        if (b) {
+            b = false;
+            $(".sound").attr('src', './assets/img/lowSound.png');
+            music.volume = 0;
+
+        } else if (!b) {
+            b = true;
+            $(".sound").attr('src', './assets/img/musicIcon.png');
+            music.volume = 0.9;
+
+        }
+    });
+
+
+
+
+</script>
+
+</html>
